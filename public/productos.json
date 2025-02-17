@@ -1,0 +1,62 @@
+[
+  {
+    "desc": "Los paneles solares Jinko son módulos fotovoltaicos de alta eficiencia fabricados por JinkoSolar, una de las empresas líderes en la industria solar a nivel mundial. Destacan por su tecnología avanzada, durabilidad y excelente rendimiento en diversas condiciones climáticas",
+    "id": "p001",
+    "img1": "https://www.vicoexport.com/wp-content/uploads/2024/01/JINKO-575W.jpg",
+    "img2": "https://mercadossolar.com/cdn/shop/products/Jinko-Solar-Tiger-Pro-72HC-TV-525-545-Watt-Solar-Panel-2.jpg?v=1701815560&width=900",
+    "ingredients": ["mozzarella", "tomates", "jamón", "orégano"],
+    "name": "Panel Solar",
+    "marca": "Jinko",
+    "price": 5950
+  },
+  {
+    "desc": "Los inversores residenciales Sungrow son dispositivos de alta eficiencia diseñados para convertir la energía de corriente continua (DC) generada por paneles solares en corriente alterna (AC) utilizable en hogares. Sungrow es una de las marcas líderes en tecnología fotovoltaica, reconocida por su innovación, confiabilidad y eficiencia energética",
+    "id": "p002",
+    "img1": "https://www.solar-center.mx/cdn/shop/products/036a347c62b2b87a9990f763a8a818d9_e681fbb6-5eb8-4a1c-97ca-53083fc0f2ca_2251x.jpg?v=1667339678",
+    "img2": "https://ae01.alicdn.com/kf/S3d86c02d84354b19805349161597e21fZ.jpg_640x640q90.jpg?width=4961&height=6732&hash=11693",
+    "ingredients": ["mozzarella", "tomates", "jamón", "choricillo"],
+    "name": "Inversor Solar",
+    "marca": "Sungrow",
+    "price": 7250
+  },
+  {
+    "desc": "Los controladores MPPT BlueSolar de Victron Energy son dispositivos avanzados diseñados para optimizar la carga de baterías en sistemas solares, maximizando la eficiencia energética. Utilizan la tecnología MPPT (Maximum Power Point Tracking) para extraer la mayor cantidad de energía posible de los paneles solares, incluso en condiciones de baja irradiación o sombreado parcial",
+    "id": "p003",
+    "img1": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSors9MZ7MwqM2HXjcTx3eii8-7UgpnOmyJmQ&s",
+    "img2": "https://www.victronenergy.com/media/pg/Manual_BlueSolar_MPPT_75-10_up_to_100-20/es/image/16628ec7c8fc6e.png",
+    "ingredients": ["mozzarella", "tomates", "salame", "orégano"],
+    "name": "Controlador solar mppt",
+    "marca": "Victron",
+    "price": 5990
+  },
+  {
+    "desc": "Las baterías de litio Pylontech son soluciones avanzadas de almacenamiento de energía diseñadas para aplicaciones solares residenciales, comerciales e industriales. Son reconocidas por su alta eficiencia, larga vida útil y compatibilidad con múltiples inversores, lo que las convierte en una de las opciones más populares para sistemas de almacenamiento de energía",
+    "id": "p004",
+    "img1": "https://orumenergia.com.mx/wp-content/uploads/2022/10/BLP-US5000.jpeg",
+    "img2": "https://dojiw2m9tvv09.cloudfront.net/10729/product/pw_845/baterialitio48v2-4kwhpylontechespecificaciones-medidas6889.png",
+    "ingredients": ["mozzarella", "salame", "aceitunas", "champiñones"],
+    "name": "Bateria litio",
+    "marca": "Pylontech",
+    "price": 9590
+  },
+  {
+    "desc": "Los soportes para paneles solares Gonvarri son estructuras de alta resistencia diseñadas para la instalación segura y eficiente de sistemas fotovoltaicos en diversas superficies. Gonvarri Solar Steel, una división de Gonvarri Industries, es líder en la fabricación de soluciones estructurales para proyectos solares a gran escala, comerciales y residenciales",
+    "id": "p005",
+    "img1": "https://siflumsa.com/wp-content/uploads/2020/08/ESTRUCTURAS-PARA-PANELES-SOLARES-VENTOX.jpg",
+    "img2": "https://image.made-in-china.com/202f0j00iIFogPQGaEqA/Capacity-Solar-Farm-Mounting-Structure-Solar-Power-Racking-for-Farmland-Irrigation.webp",
+    "ingredients": ["mozzarella", "tomates cherry", "bacon", "orégano"],
+    "name": "Soporte Panel solar",
+    "marca": "Gonvarri",
+    "price": 6450
+  },
+  {
+    "desc": "Los conectores MC4 son dispositivos estándar utilizados en instalaciones de paneles solares para conectar de manera segura y eficiente los cables fotovoltaicos. Diseñados para soportar altos voltajes y corrientes, estos conectores garantizan una conexión hermética, resistente y segura, permitiendo la transmisión eficiente de energía en sistemas solares",
+    "id": "p006",
+    "img1": "https://ematchile.com/wp-content/uploads/2021/07/Conector-MC4-10mm2.jpg",
+    "img2": "https://www.mechatronicstore.cl/wp-content/uploads/especificacion.jpg",
+    "ingredients": ["mozzarella", "pimientos", "pollo grillé", "orégano"],
+    "name": "Conector MC4",
+    "marca": "Evans",
+    "price": 8500
+  }
+]

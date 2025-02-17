@@ -1,0 +1,8 @@
+.form{
+    margin: 20px;
+    justify-items: center;
+}
+.custom-input {
+    background-color: rgb(220, 233, 226)!important; /* Fondo del input por defecto */
+    opacity: 1;
+  }
