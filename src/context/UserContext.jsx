@@ -24,7 +24,6 @@ const login = async (email, password) => {
       alert(data?.error || "Autenticación Exitosa!");
       localStorage.setItem("token", data.token);
       setUser({email
-       
               })
       return true;
 
@@ -36,7 +35,7 @@ const login = async (email, password) => {
     
 }
 
-const register = async (email, password) => {
+const register = async (email, password, name,lastnameNit,rol) => {
   const response = await fetch("http://localhost:3000/api/auth/register", {
     method: "POST",
     headers: {
@@ -45,6 +44,9 @@ const register = async (email, password) => {
     body: JSON.stringify({
       email,
       password,
+      name,
+      lastnameNit,
+      rol
     }),
   });
   const data = await response.json();
@@ -53,7 +55,10 @@ const register = async (email, password) => {
   localStorage.setItem("token", data.token);
   setUser({
     "email": email,
-    "password": password
+    "password": password,
+    "name":name,
+    "lastnameNit": lastnameNit,
+    "rol" : rol
       })
       return true;
     } else {

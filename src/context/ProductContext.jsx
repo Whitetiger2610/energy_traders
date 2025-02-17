@@ -13,23 +13,25 @@ const ProductProvider = ({children}) => {
       consultarProductos()
 
     }, [])
+
     const consultarProductos= async() =>{
-        const response = await fetch('productos.json') // http://localhost:3000/productos
+        const url = '/productos.json' // http://localhost:3000/productos
+        const response = await fetch(url) 
         const data = await response.json()
         setProductos(data)   
     }
 
     const consultarProducto = async(id) =>{
 
-      const url = "/productos.json";
+      const url = "/productos.json"; // http://localhost:3000/productos
       try{
-        const response = await fetch(url);
+        const response = await fetch(url); // fetch(`${url}/${id}`)
         if(!response.ok){
           throw new Error("Error al cargar el archivo JSON")
         }
         const data = await response.json();
 
-        const productoEncontrado = data.find(producto => producto.id === id);
+        const productoEncontrado = data.find(producto => producto.id === id); 
 
         if (!productoEncontrado){
           throw new Error("No se enconcontró ningún producto con ese ID");
