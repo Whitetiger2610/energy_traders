@@ -7,3 +7,8 @@
     height: 600px; 
     object-fit: cover;
   }
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(100%); /* Cambia el color de la flecha */
+}

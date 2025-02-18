@@ -23,11 +23,11 @@ const NavBar =() => {
             <Nav.Link as={NavLink} to="/registro" className={ setActiveClass}>Registro</Nav.Link>
             <Nav.Link as={NavLink} to="/productos" className={ setActiveClass}>Productos</Nav.Link>
             <NavDropdown className="navbar__items--right" title="Opciones" id="basic-nav-dropdown">
-            <NavDropdown.Item as={Link} href="#servicios">Servicios</NavDropdown.Item>
-            <NavDropdown.Item href="#fabricantes">Fabricantes</NavDropdown.Item>
-            <NavDropdown.Item href="#proveedores">Proveedores</NavDropdown.Item>
+            <NavDropdown.Item as={NavLink} to="/servicios" className={setActiveClass}>Servicios</NavDropdown.Item>
+            <NavDropdown.Item as={NavLink} to="/fabricantes" className={setActiveClass}>Fabricantes</NavDropdown.Item>
+            <NavDropdown.Item as={NavLink} to="/proveedores" className={setActiveClass}>Proveedores</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item as={Link} to="/contacto">
+              <NavDropdown.Item as={NavLink} to="/contacto" className={setActiveClass}>
                 Contacto
               </NavDropdown.Item>
             </NavDropdown>

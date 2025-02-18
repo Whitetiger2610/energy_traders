@@ -11,10 +11,10 @@ function ProductoComponent({id,name,marca,img1,img2,price,desc}) {
         <Col>
       <Carousel  className='custom-carousel' >
       <Carousel.Item >
-        <Image src={img1} className="d-block w-100 carousel-img" />
+        <Image src={img1} className="d-block border w-100 carousel-img object-fit-contain" />
       </Carousel.Item>
       <Carousel.Item>
-      <Image src={img2} className="d-block w-100 carousel-img" />
+      <Image src={img2} className="d-block border w-100 carousel-img object-fit-contain" />
       </Carousel.Item>
     </Carousel>
         </Col>
