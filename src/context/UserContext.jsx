@@ -6,7 +6,7 @@ const UserProvider = ({ children }) => {
 
 const [user, setUser] = useState(null);
 
-const login = async (email, password) => {
+const login = async (email, password,rol) => {
       
       const response = await fetch("http://localhost:3000/api/auth/login", {
         method: "POST",
@@ -16,6 +16,7 @@ const login = async (email, password) => {
         body: JSON.stringify({
           email,
           password,
+          rol
         }),
       });
       const data = await response.json();
