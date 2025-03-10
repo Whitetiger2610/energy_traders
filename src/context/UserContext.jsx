@@ -1,4 +1,5 @@
-import { createContext, useState } from "react"
+import { createContext, useState } from "react";
+import api from "../api";
 
 export const UserContext = createContext();
 
@@ -8,17 +9,18 @@ const [user, setUser] = useState(null);
 
 const login = async (email, password, rol) => {
       
-      const response = await fetch("http://localhost:3000/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email,
-          password,
-          rol
-        }),
-      });
+      // const response = await fetch("http://localhost:3000/login", {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify({
+      //     email,
+      //     password,
+      //     rol
+      //   }),
+      // });
+      const response = await api.post("/login", { email, password, rol });
       const data = await response.json();
 
       if (response.ok) {
@@ -38,19 +40,27 @@ const login = async (email, password, rol) => {
 
 const register = async (rol, nombre, apellido, nit, email, password) => {
   try {
-    const response = await fetch("http://localhost:3000/registro", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      rol,
-      nombre,
-      apellido,
-      nit,
-      email,
-      password,
-    }),
+  //   const response = await fetch("http://localhost:3000/registro", {
+  //   method: "POST",
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   },
+  //   body: JSON.stringify({
+  //     rol,
+  //     nombre,
+  //     apellido,
+  //     nit,
+  //     email,
+  //     password,
+  //   }),
+  // });
+  const response = await api.post("/registro", {
+    rol,
+    nombre,
+    apellido,
+    nit,
+    email,
+    password,
   });
   const data = await response.json();
 
@@ -93,11 +103,14 @@ const profile = async () => {
   
   if (token) {
     try {
-      const response = await fetch("http://localhost:3000/perfil", {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+      // const response = await fetch("http://localhost:3000/perfil", {
+      //   method: "GET",
+      //   headers: {
+      //     Authorization: `Bearer ${token}`,
+      //   },
+      // });
+      const response = await api.get("/perfil", {
+        headers: { Authorization: `Bearer ${token}` },
       });
 
       if (!response.ok) {
@@ -121,14 +134,6 @@ const profile = async () => {
   }
 };
 
-
-// const value ={
-//   user,
-//   login,
-//   logout,
-//   register,
-//   profile
-// }
   return (
     <UserContext.Provider value={{user,login,logout,register,profile}}>
       {children}  

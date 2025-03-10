@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react"
+import api from "../api";
 
 
 export const ProductContext = createContext();
@@ -21,11 +22,13 @@ const ProductProvider = ({children}) => {
     }, [])
 
     const consultarProductos= async() =>{
-        const url =  "http://localhost:3000/productos" //'/productos.json'
+        // const url =  "http://localhost:3000/productos" //
         try {
-          const response = await fetch(url, {
-            method : "GET"
-          }) 
+          // const response = await fetch(url, {
+          //   method : "GET"
+          // }) 
+          const response = await api.get("/productos");
+
           const data = await response.json()
           setProductos(data);
         }  catch (err) {
@@ -35,11 +38,12 @@ const ProductProvider = ({children}) => {
 
     const consultarProducto = async(id) =>{
 
-      const url =  `http://localhost:3000/productos/${id}` //"/productos.json";
+      // const url =  `http://localhost:3000/productos/${id}`
       try{
-        const response = await fetch(url,{ // fetch(url);
-          method : "GET"
-        })  
+        // const response = await fetch(url,{ // fetch(url);
+        //   method : "GET"
+        // })  
+        const response = await api.get(`/productos/${id}`);
         if(!response.ok){
           throw new Error("Error al cargar el archivo JSON")
         }
@@ -62,14 +66,18 @@ const ProductProvider = ({children}) => {
       }
       
       try {
-        const response = await fetch("http://localhost:3000/productos", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`
-        },
-        body: JSON.stringify(producto),
+      //   const response = await fetch("http://localhost:3000/productos", {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //     Authorization: `Bearer ${token}`
+      //   },
+      //   body: JSON.stringify(producto),
+      // });
+      const response = await api.post("/productos", producto, {
+        headers: { Authorization: `Bearer ${token}` },
       });
+
       const data = await response.json();
     
     
@@ -103,17 +111,20 @@ const ProductProvider = ({children}) => {
           return;
       }
      try{ 
-    const response = await fetch(`http://localhost:3000/productos/${id}`, {
-      method: "DELETE",
-      headers:{
-        Authorization: `Bearer ${token}`,
-      }
-    });
-    if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(errorData.error || "Error al eliminar el producto");
-    }
+    // const response = await fetch(`http://localhost:3000/productos/${id}`, {
+    //   method: "DELETE",
+    //   headers:{
+    //     Authorization: `Bearer ${token}`,
+    //   }
+    // });
 
+    // if (!response.ok) {
+    //   const errorData = await response.json();
+    //   throw new Error(errorData.error || "Error al eliminar el producto");
+    // }
+    await api.delete(`/productos/${id}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
     alert("Producto eliminado con éxito");
 
     

@@ -44,7 +44,7 @@ function Login() {
   <div className="form"> 
     <h1 style={{color:'green'}}>Inicio de Sesión</h1>
     <Image src="Logo.png" fluid alt="logo" width={300} className="d-inline-block align-top" />
-    <Form onSubmit={handleSubmit} className="form"> {/*onSubmit={handleSubmit}*/ }
+    <Form onSubmit={handleSubmit} className="form"> 
       <Row className='mb-3 w-75'>
         <Form.Group className="mb-3" as={Col} controlId="formGridState">
             <Form.Label>Rol</Form.Label>

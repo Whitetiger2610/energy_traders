@@ -1,4 +1,5 @@
 import { createContext, useState } from "react"
+import api from "../api";
 
 
 //Creación Contexto
@@ -58,14 +59,18 @@ const enviarCart = async (pedido) => {
     const token = localStorage.getItem("token");
     console.log("token",token)
 
-    const response = await fetch("http://localhost:3000/pedidos", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(pedido),
+    // const response = await fetch("http://localhost:3000/pedidos", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //       Authorization: `Bearer ${token}`,
+    //     },
+    //     body: JSON.stringify(pedido),
+    //   });
+      const response = await api.post("/pedidos", pedido, {
+        headers: { Authorization: `Bearer ${token}` },
       });
+
       const data = await response.json();
       console.log(data)
       if (response.ok) {
