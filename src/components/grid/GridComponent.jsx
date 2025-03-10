@@ -2,7 +2,7 @@
 import { useContext } from 'react'
 
 import { ProductContext } from '../../context/ProductContext'
-import CardComponent from '../card/cardComponent'
+import CardComponent from '../card/CardComponent'
 
 import './grid.css'
 
