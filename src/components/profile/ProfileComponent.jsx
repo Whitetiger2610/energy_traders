@@ -130,4 +130,4 @@ useEffect(() => {
   )
 }
 
-export default Perfil
+export default Perfil;

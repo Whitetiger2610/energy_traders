@@ -1,6 +1,6 @@
 
 import { useContext, useEffect } from 'react'
-import Perfil from '../components/profile/ProfileComponent'
+import ProfileComponent from '../components/profile/ProfileComponent'
 import { UserContext } from '../context/UserContext'
 import { useNavigate } from 'react-router-dom'
 
@@ -28,7 +28,7 @@ useEffect(()=>{
 
   return (
     <>
-    <Perfil user={user}
+    <ProfileComponent user={user}
     />
     </>
   )
