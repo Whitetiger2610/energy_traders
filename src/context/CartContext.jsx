@@ -59,6 +59,11 @@ const enviarCart = async (pedido) => {
     const token = localStorage.getItem("token");
     console.log("token",token)
 
+    if (!token) {
+      alert("Debes iniciar sesión para enviar el pedido.");
+      return false;
+    }
+
     // const response = await fetch("http://localhost:3000/pedidos", {
     //     method: "POST",
     //     headers: {
@@ -67,20 +72,21 @@ const enviarCart = async (pedido) => {
     //     },
     //     body: JSON.stringify(pedido),
     //   });
+    try{
       const response = await api.post("/pedidos", pedido, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
-      const data = await response.json();
-      console.log(data)
-      if (response.ok) {
-      alert(data?.error || "Envio Exitoso!");
-      localStorage.setItem("token", data.token);
-      
+      // const data = await response.json();
+      // if (response.ok) {
+      // alert(response.data?.error || "Envio Exitoso!");
+      // localStorage.setItem("token", response.data.token);
+      alert("Pedido enviado con éxito")
+      setCart([])
       return true;
 
-      } else {
-        alert(data?.error || "Error envío")
+      } catch(error) {
+        alert(error.response.data?.error || "Error al enviar el pedido")
         return false;
       }
 }

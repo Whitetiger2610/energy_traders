@@ -20,18 +20,18 @@ const login = async (email, password, rol) => {
       //     rol
       //   }),
       // });
-      const response = await api.post("/login", { email, password, rol });
-      const data = await response.json();
+      try{
+        const response = await api.post("/login", { email, password, rol });
+        // const data = await response.json();
 
-      if (response.ok) {
-      alert(data?.error || "Autenticación Exitosa!");
-      localStorage.setItem("token", data.token);
-      setUser({email
-              })
-      return true;
+        // if (response.ok) {
+        alert(response.data?.error || "Autenticación Exitosa!");
+        localStorage.setItem("token", response.data.token);
+        setUser({email})
+        return true;
 
-      } else {
-        alert(data?.error || "Error autenticacion")
+      } catch (error) {
+        alert(error.response.data?.error || "Error autenticacion")
         return false;
       }
      
@@ -39,7 +39,7 @@ const login = async (email, password, rol) => {
 }
 
 const register = async (rol, nombre, apellido, nit, email, password) => {
-  try {
+  
   //   const response = await fetch("http://localhost:3000/registro", {
   //   method: "POST",
   //   headers: {
@@ -54,25 +54,26 @@ const register = async (rol, nombre, apellido, nit, email, password) => {
   //     password,
   //   }),
   // });
-  const response = await api.post("/registro", {
-    rol,
-    nombre,
-    apellido,
-    nit,
-    email,
-    password,
-  });
-  const data = await response.json();
+  try{
+      const response = await api.post("/registro", {
+        rol,
+        nombre,
+        apellido,
+        nit,
+        email,
+        password,
+      });
+      // const data = await response.json();
 
 
-  if (!response.ok) { 
-    throw new Error(data.error || "Error en el registro"); 
-    }
+  // if (!response.ok) { 
+  //   throw new Error(response.data.error || "Error en el registro"); 
+  //   }
 
   alert("Registro exitoso");
-  if (data.token) {
-    localStorage.setItem("token", data.token);
-}
+  if (response.data.token) {
+    localStorage.setItem("token", response.data.token);
+  }
   setUser({
     "rol": rol,
     "nombre": nombre,
@@ -83,10 +84,10 @@ const register = async (rol, nombre, apellido, nit, email, password) => {
       })
       return true;
     } catch (error) {
-      alert(error.message); // 
+      alert(error.response?.data?.error || "Error en el registro"); // 
       return false;
-  }
-};
+     }
+}
 
 const logout = () => {
   localStorage.removeItem("token");
@@ -112,19 +113,19 @@ const profile = async () => {
       const response = await api.get("/perfil", {
         headers: { Authorization: `Bearer ${token}` },
       });
+      
+      // if (!response.ok) {
+      //   throw new Error("Error al obtener el perfil");
+      // }
 
-      if (!response.ok) {
-        throw new Error("Error al obtener el perfil");
-      }
-
-      const data = await response.json();
+      // const data = await response.json();
       setUser({
-        id: data.id,
-        rol:data.rol,
-        nombre:data.nombre,
-        apellido:data.apellido,
-        nit: data.nit,
-        email: data.email
+        id: response.data.id,
+        rol: response.data.rol,
+        nombre:response.data.nombre,
+        apellido:response.data.apellido,
+        nit: response.data.nit,
+        email: response.data.email
       }); // Actualizar el estado del usuario con los datos del perfil
     } catch (error) {
       console.error("Error al obtener el perfil:", error);
@@ -133,6 +134,7 @@ const profile = async () => {
     }
   }
 };
+
 
   return (
     <UserContext.Provider value={{user,login,logout,register,profile}}>

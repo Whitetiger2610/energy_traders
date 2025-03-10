@@ -29,8 +29,8 @@ const ProductProvider = ({children}) => {
           // }) 
           const response = await api.get("/productos");
 
-          const data = await response.json()
-          setProductos(data);
+          // const data = await response.json()
+          setProductos(response.data);
         }  catch (err) {
           console.error("Error al cargar los productos:", err);
        }
@@ -44,14 +44,14 @@ const ProductProvider = ({children}) => {
         //   method : "GET"
         // })  
         const response = await api.get(`/productos/${id}`);
-        if(!response.ok){
-          throw new Error("Error al cargar el archivo JSON")
-        }
-        const data = await response.json();
-        setProducto(data);
+        // if(!response.ok){
+        //   throw new Error("Error al cargar el archivo JSON")
+        // }
+        // const data = await response.json();
+        setProducto(response.data);
         setError(null)
       } catch (err){
-        setError(err.message)
+        setError("Error al cargar el producto")
         setProducto(null)
       }
     }
@@ -78,19 +78,19 @@ const ProductProvider = ({children}) => {
         headers: { Authorization: `Bearer ${token}` },
       });
 
-      const data = await response.json();
+      // const data = await response.json();
     
     
-      if (!response.ok) { 
-        throw new Error(data.error || "Error en agregar producto"); 
-        }
+      // if (!response.ok) { 
+      //   throw new Error(response.data.error || "Error en agregar producto"); 
+      //   }
     
       alert("Producto agregado con éxito");
     
       consultarProductos();
-      return data
+      return response.data
         } catch (error) {
-          alert(error.message); // 
+          alert(error.response?.data?.error || "Error al agregar producto"); // 
           
       }
     };
@@ -130,8 +130,8 @@ const ProductProvider = ({children}) => {
     
     setProductos((prevProductos) => prevProductos.filter((p) => p.id !== id));
   } catch (error) {
-    console.error("Error al eliminar el producto:", error);
-    alert(error.message);
+    
+    alert(error.response?.data?.error || "Error al eliminar producto");
   }
 };
 
