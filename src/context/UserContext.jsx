@@ -6,9 +6,9 @@ const UserProvider = ({ children }) => {
 
 const [user, setUser] = useState(null);
 
-const login = async (email, password,rol) => {
+const login = async (email, password, rol) => {
       
-      const response = await fetch("http://localhost:3000/api/auth/login", {
+      const response = await fetch("http://localhost:3000/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -36,42 +36,56 @@ const login = async (email, password,rol) => {
     
 }
 
-const register = async (email, password, name,lastnameNit,rol) => {
-  const response = await fetch("http://localhost:3000/api/auth/register", {
+const register = async (rol, nombre, apellido, nit, email, password) => {
+  try {
+    const response = await fetch("http://localhost:3000/registro", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
+      rol,
+      nombre,
+      apellido,
+      nit,
       email,
       password,
-      name,
-      lastnameNit,
-      rol
     }),
   });
   const data = await response.json();
-  if (response.ok) {
-  alert(data?.error || "Registro Exitoso!");
-  localStorage.setItem("token", data.token);
+
+
+  if (!response.ok) { 
+    throw new Error(data.error || "Error en el registro"); 
+    }
+
+  alert("Registro exitoso");
+  if (data.token) {
+    localStorage.setItem("token", data.token);
+}
   setUser({
+    "rol": rol,
+    "nombre": nombre,
+    "apellido": apellido,
+    "nit": nit,
     "email": email,
     "password": password,
-    "name":name,
-    "lastnameNit": lastnameNit,
-    "rol" : rol
       })
       return true;
-    } else {
-      alert(data?.error || "Error registro")
+    } catch (error) {
+      alert(error.message); // 
       return false;
-    }
+  }
 };
 
 const logout = () => {
+  localStorage.removeItem("token");
+  setUser(null); 
+  alert("Se ha cerrado sesión");
 
-  localStorage.removeItem("token")
-  setUser(null);
+  setTimeout(()=>{
+    window.location.reload(); 
+  },200)
 };
 
 const profile = async () => {
@@ -79,7 +93,8 @@ const profile = async () => {
   
   if (token) {
     try {
-      const response = await fetch("http://localhost:3000/api/auth/me", {
+      const response = await fetch("http://localhost:3000/perfil", {
+        method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -90,23 +105,32 @@ const profile = async () => {
       }
 
       const data = await response.json();
-      setUser(data); // Actualizar el estado del usuario con los datos del perfil
+      setUser({
+        id: data.id,
+        rol:data.rol,
+        nombre:data.nombre,
+        apellido:data.apellido,
+        nit: data.nit,
+        email: data.email
+      }); // Actualizar el estado del usuario con los datos del perfil
     } catch (error) {
       console.error("Error al obtener el perfil:", error);
+      localStorage.removeItem("token");
+      setUser(null)
     }
   }
 };
 
 
-const value ={
-  user,
-  login,
-  logout,
-  register,
-  profile
-}
+// const value ={
+//   user,
+//   login,
+//   logout,
+//   register,
+//   profile
+// }
   return (
-    <UserContext.Provider value={value}>
+    <UserContext.Provider value={{user,login,logout,register,profile}}>
       {children}  
     </UserContext.Provider>
   )

@@ -27,7 +27,7 @@ const Footer = () => {
           <Col md={4} className="mb-3">
             <h5 className="text-uppercase fw-bold">Síguenos</h5>
             <div className="d-flex justify-content-center justify-content-md-start gap-3">
-              <a href="https://facebook.com" className="text-white fs-4"><FaFacebook /></a>
+              <a href="https://facebook.com" className="text-white fs-4" ><FaFacebook /></a>
               <a href="https://instagram.com" className="text-white fs-4"><FaInstagram /></a>
               <a href="https://twitter.com" className="text-white fs-4"><FaTwitter /></a>
               <a href="https://linkedin.com" className="text-white fs-4"><FaLinkedin /></a>

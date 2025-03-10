@@ -1,31 +1,27 @@
 import { useContext, useEffect } from "react"
 import ProductoComponent from "../../components/producto/ProductoComponent"
+import { ProductContext } from "../../context/ProductContext"
 import { useParams } from "react-router-dom";
-import {ProductContext} from "../../context/ProductContext";
 
 
 const ProductoPage = () => {
-
-  const {id} = useParams();
-  const {producto, consultarProducto} = useContext(ProductContext)
-
-
+  const { id } = useParams();
+  const { producto, consultarProducto } = useContext(ProductContext);
 
   useEffect(() => {
-    consultarProducto(id)
-  }, [consultarProducto,id])
-  
+    if (id) {
+      consultarProducto(id);
+    }
+  }, [id]);
 
+  if (!producto) {
+    return <p>Cargando producto...</p>;
+  }
+  
   return (
     <>
-      <ProductoComponent 
-                id = {producto.id}
-                name = {producto.name} 
-                img1 = {producto.img1} 
-                img2 = {producto.img2}
-                price = {producto.price} 
-                desc = {producto.desc}
-            />
+      <ProductoComponent producto={producto}/>
+      
     </>
   )
 }

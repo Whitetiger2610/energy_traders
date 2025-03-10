@@ -10,7 +10,7 @@ const CarouselComponent = ({img1,img2}) => {
       <Carousel.Item >
         <Image src={img1.url} className="d-block w-100 carousel-img" />
         <Carousel.Caption>
-          <h1 className='bs-secondary-text'>EL MAYOR MARKETPLACE DE PRODUCTOS Y SERVICIOS DE ENERGIAS RENOVABLES</h1>
+          <h1 className='text-bg-dark'>EL MAYOR MARKETPLACE DE PRODUCTOS Y SERVICIOS DE ENERGIAS RENOVABLES</h1>
           <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
         </Carousel.Caption>
       </Carousel.Item>

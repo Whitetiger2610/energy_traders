@@ -6,25 +6,32 @@ import CardComponent from '../card/cardComponent'
 
 import './grid.css'
 
+
 const GridComponent = () => {
-    const {productos} = useContext(ProductContext)
+    
+    const { filteredProducts } = useContext(ProductContext)
+   
 
   return ( 
     <div className='card-wrapper'>
         {
-          productos.map(p => (
-              
+         
+            filteredProducts.length>0 ? (
+              filteredProducts.map((p)=> (
             <CardComponent 
                 key={p.id}
                 id = {p.id}
-                name = {p.name} 
-                img1 = {p.img1} 
-                price = {p.price} 
-                desc = {p.desc}
+                nombre = {p.nombre} 
+                imagen1 = {p.imagen1} 
+                precio = {p.precio} 
+                descripcion = {p.descripcion}
+                producto = {p}
+                
             />
-          )  
-        )
-        }
+          ))  
+        ): (
+          <p>No se encontraron productos</p>
+        )}
     </div>
   )
 }
