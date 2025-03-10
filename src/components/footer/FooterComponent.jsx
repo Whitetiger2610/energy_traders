@@ -1,5 +1,7 @@
 import { Container, Row, Col } from "react-bootstrap";
 import { FaFacebook, FaInstagram, FaTwitter, FaLinkedin } from "react-icons/fa";
+import {NavLink } from 'react-router-dom';
+import Nav from 'react-bootstrap/Nav';
 
 const Footer = () => {
   return (
@@ -18,7 +20,7 @@ const Footer = () => {
             <h5 className="text-uppercase fw-bold">Enlaces</h5>
             <ul className="list-unstyled">
               <li><a href="/" className="text-white text-decoration-none">Inicio</a></li>
-              <li><a href="/productos" className="text-white text-decoration-none">Productos</a></li>
+              <li><Nav.Link as={NavLink} to="/productos" className="text-white text-decoration-none">Productos</Nav.Link></li>
               <li><a href="/servicios" className="text-white text-decoration-none">Servicios</a></li>
               <li><a href="/contacto" className="text-white text-decoration-none">Contacto</a></li>
             </ul>

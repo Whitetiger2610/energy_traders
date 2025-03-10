@@ -1,10 +1,14 @@
 import { Carousel, Col, Image, Row } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { CartContext } from '../../context/CartContext';
+import { useContext } from 'react';
 
 
 
 const ProductoComponent= ({producto})=> {
+
+  const {agregarCart} = useContext(CartContext)
 
   if (!producto) {
     return <p>Cargando producto...</p>;
@@ -35,7 +39,7 @@ const ProductoComponent= ({producto})=> {
         </Card.Text>
         <Row className='g-3'>
         <Col><Button variant="dark" block="true">Añadir</Button></Col>
-        <Col><Button variant="primary" block="true">Datasheet</Button></Col>
+        <Col><Button variant="primary" block="true" onClick={()=>{agregarCart(producto)}}>Datasheet</Button></Col>
         </Row>
       </Card.Body>
       </Col>

@@ -56,6 +56,8 @@ const ProductProvider = ({children}) => {
       }
     }
 
+    
+
     const agregarProducto = async (producto) => {
       
       const token = localStorage.getItem("token");
