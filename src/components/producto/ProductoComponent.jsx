@@ -38,8 +38,8 @@ const ProductoComponent= ({producto})=> {
           $ {producto.precio}
         </Card.Text>
         <Row className='g-3'>
-        <Col><Button variant="dark" block="true">Añadir</Button></Col>
-        <Col><Button variant="primary" block="true" onClick={()=>{agregarCart(producto)}}>Datasheet</Button></Col>
+        <Col><Button variant="dark" block="true" onClick={()=>{agregarCart(producto)}}>Añadir</Button></Col>
+        <Col><Button variant="primary" block="true" >Datasheet</Button></Col>
         </Row>
       </Card.Body>
       </Col>
