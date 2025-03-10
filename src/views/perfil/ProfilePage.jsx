@@ -1,7 +1,7 @@
 
 import { useContext, useEffect } from 'react'
-import ProfileComponent from '../components/profile/ProfileComponent'
-import { UserContext } from '../context/UserContext'
+import ProfileComponent from '../../components/profile/ProfileComponent'
+import { UserContext } from '../../context/UserContext'
 import { useNavigate } from 'react-router-dom'
 
 const ProfilePage = () => {
