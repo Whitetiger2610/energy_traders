@@ -1,4 +1,4 @@
-import {Routes, Route } from "react-router-dom"
+import {Routes, Route, Router, Navigate } from "react-router-dom"
 //Importación Components
 import NavBar from "./components/navbar/NavbarComponent"
 import Footer from "./components/footer/FooterComponent"
@@ -18,28 +18,54 @@ import CarritoPage from "./views/carrito/CarritoPage"
 
 //Importacion Contexts
 
-import ProductContext from "./context/ProductContext"
-import UserContext from "./context/UserContext"
-import CartContext from "./context/CartContext"
+
+import {UserContext} from "./context/UserContext"
+import { useContext } from "react"
 
 
 
 function App() {
 
+  const { user } = useContext(UserContext);
+
   return (
     <>
-    <CartContext>
+    <NavBar/>
+      <Routes>
+      <Route path="/" element={<HomePage/>} />
+        <Route path="/login" element={<LoginPage/>} />
+        <Route path="/registro" element={<RegistroPage/>} />
+        <Route path="/perfil" element={user?<ProfilePage/> : <Navigate to ="/login"/>} />
+        <Route path="/productos/:id" element={<ProductoPage/>} />
+        <Route path="/productos" element={<ProductosPage/>} />
+        <Route path="/agregarproducto" element={(user?.rol === "proveedor"|| user?.rol === "fabricante")? <AddProductoPage/>: <Navigate to ="/login"/>} />
+        <Route path="/carrito" element={<CarritoPage/>} />
+        {/* <Route path="/pedidos" element={user?<ProfilePage/> : <Navigate to ="/login"/>} /> */}
+        <Route path="/servicios" element={<ComingPage/>} />
+        <Route path="/fabricantes" element={<ComingPage/>} />
+        <Route path="/proveedores" element={<ComingPage/>} />
+        <Route path="/contacto" element={<ContactPage/>} />
+        <Route path="*" element={<NotFoundPage/>} />
+      </Routes>
+      <Footer/>
+    </>
+  )
+}
+
+export default App
+
+{/* <CartContext>
     <UserContext>
     <ProductContext>
       <NavBar />
       <Routes>
-        <Route path="/" element={<HomePage/>} />
+      <Route path="/" element={<HomePage/>} />
         <Route path="/login" element={<LoginPage/>} />
         <Route path="/registro" element={<RegistroPage/>} />
-        <Route path="/perfil" element={<ProfilePage/>} />
+        <Route path="/perfil" element={user?.rol ?<ProfilePage/> : <Navigate to ="/login"/>} />
         <Route path="/productos/:id" element={<ProductoPage/>} />
         <Route path="/productos" element={<ProductosPage/>} />
-        <Route path="/agregarproducto" element={<AddProductoPage/>} />
+        <Route path="/agregarproducto" element={(user?.rol === "proveedor"|| user?.rol === "fabricante")? <AddProductoPage/>: <Navigate to ="/login"/>} />
         <Route path="/carrito" element={<CarritoPage/>} />
         <Route path="/servicios" element={<ComingPage/>} />
         <Route path="/fabricantes" element={<ComingPage/>} />
@@ -50,9 +76,4 @@ function App() {
       <Footer/>
       </ProductContext>
       </UserContext>
-      </CartContext>
-    </>
-  )
-}
-
-export default App
+      </CartContext> */}
